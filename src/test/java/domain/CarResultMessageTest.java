@@ -28,7 +28,6 @@ class CarResultMessageTest {
         CarResultMessage carResultMessage = new CarResultMessage();
         carResultMessage.addWinnersMessage(winners);
 
-        System.out.println(carResultMessage.getResultMessage());
         assertThat(carResultMessage.getResultMessage().toString()).isEqualTo("아반떼,소나타 가 최종 우승했습니다.");
     }
 }
