@@ -25,12 +25,27 @@ class CarRaceWinnerTest {
         }
     }
 
-    @DisplayName("우승자 테스트")
+    @DisplayName("단일 우승자")
     @Test
-    void 우승자_여부_테스트() {
+    void 단일_우승자() {
         CarRaceWinner carRaceWinner = new CarRaceWinner(resultMap);
         List<String> winners = carRaceWinner.getWinners();
 
-        assertThat(winners).isNotNull();
+        assertThat(winners).containsExactly("자동차4");
+    }
+
+    @DisplayName("다수 우승자")
+    @Test
+    void 다수_우승자() {
+        CarResult carResult;
+        carResult = new CarResult();
+        carResult.setPosition(4);
+        carResult.setCarName("자동차5");
+        resultMap.put("자동차5", carResult);
+
+        CarRaceWinner carRaceWinner = new CarRaceWinner(resultMap);
+        List<String> winners = carRaceWinner.getWinners();
+
+        assertThat(winners).containsExactly("자동차4", "자동차5");
     }
 }
